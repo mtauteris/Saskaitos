@@ -1,0 +1,47 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:ui="http://java.sun.com/jsf/facelets" template="sablonas.xhtml">
+    <ui:define name="turinys">
+        <h:form>
+            <p:messages id="messages" showDetail="false" autoUpdate="true" closable="true"/>
+            <p:dataTable value="#{invoiceList.findAll()}" var="Invoice">
+                <p:column headerText="Id">
+                    <h:outputText value="#{Invoice.id}"/>
+                </p:column>
+
+                <p:column headerText="writtenBy">
+                    <h:outputText value="#{Invoice.writtenBy}"/>
+                </p:column>
+
+                <p:column headerText="receiver">
+                    <h:outputText value="#{Invoice.receiver}"/>
+                </p:column>
+            </p:dataTable>
+        </h:form>
+
+        <h:form>
+            <p:panel id="basic" header="Saskaita" style="...">
+                <h:panelGrid id="grid" column="3" cellpadding="5">
+                    <h:outputLabel for="writtenBy" value="Saskaitą išrašė"/>
+                    <h:inputText id="writtenBy" value="#{invoiceModel.newInvoice.writtenBy}">
+                        <f:validateBean/>
+                    </h:inputText>
+                    <p:message for="writtenBy" display="icon"/>
+
+                    <h:outputLabel for="receiver" value="Gavėjas"/>
+                    <h:inputText id="receiver" value="#{invoiceModel.newInvoice.receiver}">
+                        <f:validateBean/>
+                    </h:inputText>
+                    <p:message for="receiver" display="icon"/>
+
+                </h:panelGrid>
+            </p:panel>
+            <h:commandButton action="#{newInvoice.save()}" value="Add new" update="grid"/>
+        </h:form>
+    </ui:define>
+    <ui:define name="pavadinimas">
+        Add new Preke
+    </ui:define>
+</ui:composition>
