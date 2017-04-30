@@ -7,41 +7,30 @@
         <h:form>
             <p:messages id="messages" showDetail="false" autoUpdate="true" closable="true"/>
             <p:dataTable value="#{invoiceList.findAll()}" var="Invoice">
-                <p:column headerText="Id">
+                <p:column headerText="Sąskaitos numeris">
                     <h:outputText value="#{Invoice.id}"/>
                 </p:column>
 
-                <p:column headerText="writtenBy">
+                <p:column headerText="Siuntėjas">
                     <h:outputText value="#{Invoice.writtenBy}"/>
                 </p:column>
 
-                <p:column headerText="receiver">
+                <p:column headerText="Gavėjas">
                     <h:outputText value="#{Invoice.receiver}"/>
                 </p:column>
+                <p:column headerText="Išrašymo data">
+                    <h:outputText value="#{Invoice.date}"/>
+                </p:column>
+                <p:column headerText="Prekės">
+                    <h:outputText value="#{Invoice.items}"/>
+                </p:column>
+
+                <p:column headerText="Veiksmai">
+                    <h:commandButton value="Pridėti prekę" action="itemController.save()"/>
+                </p:column>
             </p:dataTable>
-        </h:form>
-
-        <h:form>
-            <p:panel id="basic" header="Saskaita" style="...">
-                <h:panelGrid id="grid" column="3" cellpadding="5">
-                    <h:outputLabel for="writtenBy" value="Saskaitą išrašė"/>
-                    <h:inputText id="writtenBy" value="#{invoiceModel.newInvoice.writtenBy}">
-                        <f:validateBean/>
-                    </h:inputText>
-                    <p:message for="writtenBy" display="icon"/>
-
-                    <h:outputLabel for="receiver" value="Gavėjas"/>
-                    <h:inputText id="receiver" value="#{invoiceModel.newInvoice.receiver}">
-                        <f:validateBean/>
-                    </h:inputText>
-                    <p:message for="receiver" display="icon"/>
-
-                </h:panelGrid>
-            </p:panel>
-            <h:commandButton action="#{newInvoice.save()}" value="Add new" update="grid"/>
+            <h:commandButton id="CreateNewInvoiceButton" action="CreateNewInvoicePage" value="Sukurti naują sąskaitą"/>
         </h:form>
     </ui:define>
-    <ui:define name="pavadinimas">
-        Add new Preke
-    </ui:define>
+
 </ui:composition>

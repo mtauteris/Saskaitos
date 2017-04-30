@@ -28,5 +28,9 @@ public class NewInvoice {
         return "main";
     }
 
+    public void update(Invoice invoice){
+        invoiceRepository.save(invoice);
+    }
+
 
 }

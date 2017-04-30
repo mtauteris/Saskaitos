@@ -1,12 +1,13 @@
 package lt.vtvpmc.ems.pw.entities;
 
+import org.hibernate.annotations.Fetch;
 import org.hibernate.validator.constraints.NotBlank;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.util.Date;
+import java.util.List;
 
 /**
  * Created by JP16_2 on 2017.04.28.
@@ -23,8 +24,28 @@ public class Invoice implements Serializable{
     @NotNull
     @NotBlank
     private String receiver;
+    @Temporal(TemporalType.DATE)
+    private Date date;
+   @OneToMany( fetch = FetchType.EAGER, cascade = {CascadeType.ALL}, orphanRemoval = true)
+   private List<Item> items;
 
     public Invoice() {
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public List<Item> getItems() {
+        return items;
+    }
+
+    public void setItems(List<Item> items) {
+        this.items = items;
     }
 
     public long getId() {

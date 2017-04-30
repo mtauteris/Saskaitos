@@ -5,7 +5,7 @@
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
                         http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
          version="3.0">
-    <display-name>Practical Work!</display-name>
+    <display-name>Saskaitų sistema</display-name>
 
     <display-name>mojarra-regression-test</display-name>
     <description>A simple regression test to make it easier to get your bug fixed. The only reason we need a web.xml is to set the PROJECT_STAGE to Develoment.  If you have a web.xml, then you need to map the FacesServlet.</description>
