@@ -13,7 +13,7 @@ public class ItemModel {
     private Item item;
 
     public Item getItem() {
-        return new Item();
+        return item;
     }
 
     public void setItem(Item item) {

@@ -25,6 +25,7 @@ public class NewInvoice {
 
     public String save(){
         invoiceRepository.save(invoiceModel.getNewInvoice());
+        invoiceModel.setNewInvoice(new Invoice());
         return "main";
     }
 
