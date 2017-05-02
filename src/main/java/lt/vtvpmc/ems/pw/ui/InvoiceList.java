@@ -24,4 +24,8 @@ public class InvoiceList {
         return invoiceRepository.findAll();
     }
 
+    public Invoice findCurrent(){
+        return invoiceModel.getCurrentInvoice();
+    }
+
 }

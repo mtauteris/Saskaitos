@@ -18,6 +18,9 @@ import javax.persistence.PersistenceContext;
 @Scope("request")
 public class NewInvoice {
 
+    public static final String NAV_SHOW_INVOICE ="invoiceView";
+    public static final String NAV_SHOW_MAIN = "main";
+
     @Autowired
     private InvoiceRepository invoiceRepository;
     @Autowired
@@ -26,11 +29,17 @@ public class NewInvoice {
     public String save(){
         invoiceRepository.save(invoiceModel.getNewInvoice());
         invoiceModel.setNewInvoice(new Invoice());
-        return "main";
+        return NAV_SHOW_MAIN;
     }
 
-    public void update(Invoice invoice){
-        invoiceRepository.save(invoice);
+    public String review(Invoice invoice){
+        invoiceModel.setCurrentInvoice(invoice);
+        return NAV_SHOW_INVOICE;
+    }
+
+    public String edit(){
+        invoiceRepository.save(invoiceModel.getCurrentInvoice());
+        return NAV_SHOW_INVOICE;
     }
 
 

@@ -1,0 +1,64 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:ui="http://java.sun.com/jsf/facelets" template="sablonas.xhtml">
+    <ui:define name="turinys">
+        <h:form>
+            <p:messages id="messages" showDetail="false" autoUpdate="true" closable="true"/>
+                <p:panel header="Invoice">
+                    <h:panelGrid columns="2" cellpadding="5">
+
+                            <p:outputLabel for="InvoiceNumber" value="Sąskaitos numeris"/>
+                            <h:outputText id="InvoiceNumber" value="#{invoiceModel.currentInvoice.id}"/>
+
+                            <p:outputLabel for="InvoicewrittenBy" value="Siuntėjas"/>
+                            <h:outputText id="InvoicewrittenBy" value="#{invoiceModel.currentInvoice.writtenBy}"/>
+
+                            <p:outputLabel for="InvoiceReceiver" value="Gavėjas"/>
+                            <h:outputText id="InvoiceReceiver" value="#{invoiceModel.currentInvoice.receiver}"/>
+
+                            <p:outputLabel for="InvoiceDate" value="Išrašymo data"/>
+                            <h:outputText id="InvoiceDate" value="#{invoiceModel.currentInvoice.date}"/>
+
+                            <p:outputLabel for="InvoiceItems" value="Prekės"/>
+                            <h:outputText id="InvoiceItems" value="#{invoiceModel.currentInvoice.items}"/>
+                    </h:panelGrid>
+                </p:panel>
+
+
+            <p:panel header="InvoiceEdit">
+                <h:panelGrid id="grid" column="3" cellpadding="5">
+                    <h:outputLabel for="writtenBy" value="Saskaitą išrašė"/>
+                    <h:inputText id="writtenBy" value="#{invoiceModel.currentInvoice.writtenBy}">
+                        <f:validateBean/>
+                    </h:inputText>
+                    <p:message for="writtenBy" display="icon"/>
+
+                    <h:outputLabel for="receiver" value="Gavėjas"/>
+                    <h:inputText id="receiver" value="#{invoiceModel.currentInvoice.receiver}">
+                        <f:validateBean/>
+                    </h:inputText>
+                    <p:message for="receiver" display="icon"/>
+
+                    <p:outputLabel for="date">Išrašymo data:</p:outputLabel>
+                    <p:calendar
+                            id="date"
+                            value="#{invoiceModel.currentInvoice.date}"
+                            showOn="button"
+                            required="true"
+                            pattern="yyyy-MM-dd">
+                    </p:calendar>
+                    <p:message for="date"></p:message>
+
+                </h:panelGrid>
+            </p:panel>
+            <h:commandButton action="#{newInvoice.edit()}" value="Atnaujinti sąskaitą" update="grid"/>
+            <h:commandButton action="main" value="Pagrindinis puslapis" update="grid"/>
+        </h:form>
+    </ui:define>
+    <ui:define name="pavadinimas">
+        Peržiūrėti sąskaitą
+    </ui:define>
+
+</ui:composition>
