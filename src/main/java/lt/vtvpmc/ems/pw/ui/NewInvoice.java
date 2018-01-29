@@ -20,6 +20,7 @@ public class NewInvoice {
 
     public static final String NAV_SHOW_INVOICE ="invoiceView";
     public static final String NAV_SHOW_MAIN = "main";
+    public static final String NAV_SHOW_ADD_ITEM = "addItemPage";
 
     @Autowired
     private InvoiceRepository invoiceRepository;
@@ -41,6 +42,8 @@ public class NewInvoice {
         invoiceRepository.save(invoiceModel.getCurrentInvoice());
         return NAV_SHOW_INVOICE;
     }
+
+
 
 
 }

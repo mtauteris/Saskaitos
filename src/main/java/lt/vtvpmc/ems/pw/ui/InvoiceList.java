@@ -15,6 +15,7 @@ import java.util.List;
 @Controller
 @Scope("request")
 public class InvoiceList {
+
     @Autowired
     private InvoiceRepository invoiceRepository;
     @Autowired

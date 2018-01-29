@@ -18,12 +18,19 @@ public class Item implements Serializable{
     private long id;
     @NotNull
     @NotBlank
-    private String Name;
+    private String name;
     @NotNull
     @NotBlank
     private String price;
     @ManyToOne(optional = true, cascade = {CascadeType.ALL})
     private Invoice invoice;
+
+    public Item() {
+    }
+
+    public Item(Invoice invoice) {
+        this.invoice = invoice;
+    }
 
     public long getId() {
         return id;
@@ -34,11 +41,11 @@ public class Item implements Serializable{
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        this.name = name;
     }
 
     public String getPrice() {

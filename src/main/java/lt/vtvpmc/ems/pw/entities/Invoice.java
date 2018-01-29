@@ -26,7 +26,7 @@ public class Invoice implements Serializable{
     private String receiver;
     @Temporal(TemporalType.DATE)
     private Date date;
-    @OneToMany( fetch = FetchType.EAGER, cascade = {CascadeType.ALL}, orphanRemoval = true)
+    @OneToMany( mappedBy = "invoice", fetch = FetchType.EAGER, cascade = {CascadeType.ALL}, orphanRemoval = true)
     private List<Item> items;
 
     public Invoice() {

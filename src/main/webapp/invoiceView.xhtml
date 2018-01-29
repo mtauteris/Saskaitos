@@ -23,6 +23,8 @@
 
                             <p:outputLabel for="InvoiceItems" value="Prekės"/>
                             <h:outputText id="InvoiceItems" value="#{invoiceModel.currentInvoice.items}"/>
+
+                        <h:commandButton action="addItemPage" value="Pridėti prekę" update="grid"/>
                     </h:panelGrid>
                 </p:panel>
 
